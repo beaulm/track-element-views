@@ -4,13 +4,13 @@ Track Element Views is a simple function to track in Google Anlaytics when the u
 
 ## Use
 
-After including the function in your site and the element(s) you want to track have been loaded, simply call `trackViews` with the arguments: `miliseconds`, `percent visible`, and `selector`.
+After including the function in your site and the element(s) you want to track have been loaded, simply call `trackViews` with the arguments: `milliseconds`, `percent visible`, and `selector`.
 
-*  `miliseconds:` How long the element has to be in view. This is to prevent the user scrolling past the element counting as a view.
+*  `milliseconds:` How long the element has to be in view. This is to prevent the user scrolling past the element counting as a view.
 *  `percent visible:` If you want to count less than the full element being in view as a view.
 *  `selector:` Anything that works with `document.querySelectorAll`.
 
-This is telling the tracker to wait 1 second (1000 miliseconds) after scrolling before recording the event, and to record any image that's at least 90% visible.
+This is telling the tracker to wait 1 second (1000 milliseconds) after scrolling before recording the event, and to record any image that's at least 90% visible.
 ```javascript
 trackViews(1000, 90, 'img');
 ```
@@ -25,7 +25,7 @@ Events will be tracked with:
 *  **Category:** Element
 *  **Action:** Individual View
 *  **Label:** {element}
-*  **Value:** Visible For (in miliseconds)
+*  **Value:** Visible For (in milliseconds)
 
 {element} is a unique identifier for the particular element being reported on. The function will look for one of the following attributes to use, in order, until it finds one:
 *  `data-trackname`

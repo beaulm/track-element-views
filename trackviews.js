@@ -2,7 +2,7 @@
 function trackViews(minimumScrollPause, percentVisible, selector) {
 
 	//Taken from Underscore.js
-	//Doesn't execute the function passed in until debounce hasn't been called for `wait` miliseconds
+	//Doesn't execute the function passed in until debounce hasn't been called for `wait` milliseconds
 	function debounce(func, wait, immediate) {
 		var timeout;
 		return function() {
