@@ -22,10 +22,10 @@ For best results add a `data-trackname` attribute with a useful value to your el
 ## Tracking info
 
 Events will be tracked with:
-*  *Category:* Element
-*  *Action:* Individual View
-*  *Label:* {element}
-*  *Value:* Visible For (in miliseconds)
+*  **Category:** Element
+*  **Action:** Individual View
+*  **Label:** {element}
+*  **Value:** Visible For (in miliseconds)
 
 {element} is a unique identifier for the particular element being reported on. The function will look for one of the following attributes to use, in order, until it finds one:
 *  `data-trackname`
