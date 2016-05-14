@@ -1,4 +1,4 @@
-# Track Element Views v0.0.1
+# Track Element Views v0.0.2
 
 If you want to know every time something is viewed on your website, and maybe track it in analytics, Track Element Views is right for you. Perhaps you've got an infinite scroll page/blog and you want to know when, how many times, and for how long each element is in view. Or maybe you've got a long art gallery and you want to know which pictures people are _actually_ looking at (not just which ones are on the page they're viewing).
 
