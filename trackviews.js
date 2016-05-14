@@ -52,7 +52,7 @@ function trackViews(minimumScrollPause, percentVisible, selector) {
 	//Initialize a list of visible element timings
 	var elementTimings = {};
 
-	//When the user has stopped scrolling for a second
+	//When the user has stopped scrolling for the specified amount of time
 	window.onscroll = debounce(function() {
 
 		//Create a list of elements currently in view
@@ -160,6 +160,3 @@ function trackViews(minimumScrollPause, percentVisible, selector) {
 		}
 	};
 }
-
-//This is telling the tracker to wait 1 second (1000 miliseconds) after scrolling before recording the event, and to record any element that's at least 90% visible
-trackViews(1000, 90, 'img');
