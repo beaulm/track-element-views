@@ -19,7 +19,7 @@ trackViews(1000, 90, 'img');
 
 `percent visible` is a percentage of the element _area_.
 
-Data will automatically be sent to Google Analytics if possible. In addition, the function will emit custom events for each tracking call. Each time an element that was in view goes out of view an `individualView` event is dispatched on the window. _Just before_ the page exists, `totalViews` and `viewedFor` events are dispatched.
+Data will automatically be sent to Google Analytics if possible. In addition, the function will emit custom events for each tracking call. Each time an element that was in view goes out of view an `individualView` event is dispatched on the window. _Just before_ the page exits, `totalViews` and `viewedFor` events are dispatched.
 
 ## Tracking info
 
