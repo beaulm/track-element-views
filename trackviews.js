@@ -1,6 +1,5 @@
 //Sends events to GA if at least the specified percentage of the element is on screen for the minimum amount of time supplied
 function trackViews(minimumScrollPause, percentVisible, selector) {
-
 	//Taken from Underscore.js
 	//Doesn't execute the function passed in until debounce hasn't been called for `wait` milliseconds
 	function debounce(func, wait, immediate) {
@@ -39,6 +38,26 @@ function trackViews(minimumScrollPause, percentVisible, selector) {
 		if(element.getAttribute('alt') !== null) {
 			return element.getAttribute('alt');
 		}
+	}
+
+	//Track/emit events
+	function emitEvent(action, label, value) {
+		//If Google Universal Analytics is present
+		if(window.hasOwnProperty('ga') && typeof(window.ga) === 'function') {
+			//Send a ga event
+			window.ga('send', 'event', 'Element', action, label, value);
+		}
+
+		//Create a custom "synthetic" event to dispatch
+		var syntheticEvent = new CustomEvent(action, {
+			detail: {
+				action: label,
+				label: value
+			}
+		});
+
+		//Dispatch the custom event
+		window.dispatchEvent(syntheticEvent);
 	}
 
 	//Make sure the browser gives the date properly (IE < 8: I'm looking in your direction)
@@ -124,8 +143,8 @@ function trackViews(minimumScrollPause, percentVisible, selector) {
 					//Add the new timing to it's record
 					elementTimings[currentElement].push(visibleFor);
 
-					//Send a ga event for this particular view
-					window.ga('send', 'event', 'Element', 'Individual View', currentElement, visibleFor);
+					//Track an event for this particular view
+					emitEvent('individualView', currentElement, visibleFor);
 
 					//Remove it from the list of elements in view
 					delete visibleElements[currentElement];
@@ -153,10 +172,10 @@ function trackViews(minimumScrollPause, percentVisible, selector) {
 		for(var element in elementTimings) {
 
 			//Send a ga event for the total number of views
-			window.ga('send', 'event', 'Element', 'Total Views', element, elementTimings[element].length);
+			emitEvent('totalViews', element, elementTimings[element].length);
 
 			//Send a ga event for the total time visible
-			window.ga('send', 'event', 'Element', 'Viewed For', element, elementTimings[element].reduce(function(pv, cv) { return pv + cv; }, 0));
+			emitEvent('viewedFor', element, elementTimings[element].reduce(function(pv, cv) { return pv + cv; }, 0));
 		}
 	};
 }
